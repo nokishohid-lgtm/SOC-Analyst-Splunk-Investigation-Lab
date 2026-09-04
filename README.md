@@ -1,2 +1,37 @@
-# SOC-Analyst-Splunk-Investigation-Lab
-SOC analyst portfolio project using Windows Security logs, Sysmon, Splunk, SPL detection, alerting, investigation, and MITRE ATT&amp;CK.
+# SOC Analyst Splunk Investigation Lab
+
+## Project Overview
+
+## Objective
+
+## Lab Environment
+
+## Tools Used
+
+## Architecture
+
+## Investigation Scenario
+
+## Log Collection
+
+## Detection
+
+## SPL Queries
+
+## Investigation Findings
+
+## MITRE ATT&CK Mapping
+
+## Remediation Recommendations
+
+## Validation
+
+## Evidence
+
+## Skills Demonstrated
+
+## Lessons Learned
+
+## Disclaimer
+
+This project was conducted in an authorized personal cybersecurity lab for educational and defensive security purposes.
