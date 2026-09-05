@@ -4,6 +4,7 @@
 - [SOC Incident Report - DOCX](incident-report/SOC-Incident-Report.docx)
 - [Failed Login Detection SPL Query](spl-queries/failed-login-detection.spl)
 - [Full Screenshot Evidence](screenshots/)
+- [Lessons Learned](lessons-learned/)
 
 ## Selected Evidence
 
