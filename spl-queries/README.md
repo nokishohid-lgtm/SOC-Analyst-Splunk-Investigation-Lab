@@ -1,13 +1,13 @@
-# SPL Queries
+# SPL Detection Queries
 
-This folder contains the Splunk Search Processing Language (SPL) queries used in the SOC Analyst Splunk Investigation Lab.
+Numbered SPL queries used in the SOC Analyst Splunk Investigation Lab.
 
-## Failed Login Detection
+| File | Purpose |
+|---|---|
+| `01-basic-event-search.spl` | Raw Event ID 4625 search |
+| `02-host-count.spl` | Count failed logons per host |
+| `03-five-minute-threshold.spl` | 5+ failures in 5 minutes (baseline detection) |
+| `04-username-aware-detection.spl` | Adds parsed username grouping |
+| `05-rolling-validation.spl` | Rolling 5-minute window for validation |
 
-The detection query identifies repeated Windows failed login attempts using Security Event ID 4625.
-
-```spl
-index=soc_lab EventCode=4625
-| bin _time span=5m
-| stats count by _time host
-| where count >= 5
+All queries target `index=soc_lab`.
