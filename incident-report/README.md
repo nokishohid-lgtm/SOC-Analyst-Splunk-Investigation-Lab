@@ -1,10 +1,11 @@
 # Incident Report
 
-This folder contains the final incident investigation report for the SOC Analyst Splunk Investigation Lab.
+Full SOC investigation report for repeated Windows failed authentication activity.
 
-## Reports
+## Files
 
-- [SOC Incident Report - PDF](SOC-Incident-Report.pdf)
-- [SOC Incident Report - DOCX](SOC-Incident-Report.docx)
-
-The report documents the detection, investigation, evidence, MITRE ATT&CK mapping, risk, remediation, validation, and lessons learned from the repeated failed Windows login investigation.
+| File | Description |
+|---|---|
+| `REPORT.md` | Main report (markdown, renders on GitHub) |
+| `SOC-Incident-Report.pdf` | Archived PDF version |
+| `SOC-Incident-Report.docx` | Editable source document |
