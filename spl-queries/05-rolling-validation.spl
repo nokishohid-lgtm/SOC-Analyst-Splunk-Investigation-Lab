@@ -1,0 +1,6 @@
+index=soc_lab source="WinEventLog:Security" EventCode=4625 "SOC-Test"
+| eval Username=mvindex(Account_Name,1)
+| sort 0 _time
+| streamstats time_window=5m count as FailedLogins by host Username
+| where FailedLogins >= 5
+| table _time host Username FailedLogins
