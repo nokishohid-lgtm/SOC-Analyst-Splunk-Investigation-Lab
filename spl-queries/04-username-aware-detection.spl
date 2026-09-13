@@ -1,0 +1,5 @@
+index=soc_lab source="WinEventLog:Security" EventCode=4625
+| eval Username=mvindex(Account_Name,1)
+| bin _time span=5m
+| stats count by _time host Username
+| where count >= 5
