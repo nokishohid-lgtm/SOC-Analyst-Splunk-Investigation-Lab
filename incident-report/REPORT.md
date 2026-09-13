@@ -5,6 +5,17 @@
 Prepared by: Noki Shohid
 Date: September 2026
 
+## Validation
+
+Repeated the test after the initial investigation...
+**Result: PASS.**
+
+**Negative test:** A single failed logon did not trigger the alert,
+confirming the threshold does not fire on isolated authentication errors.
+
+### Negative Test Evidence
+
+![Negative test](../screenshots/13-negative-test.png)
 ---
 
 ## Executive Summary
