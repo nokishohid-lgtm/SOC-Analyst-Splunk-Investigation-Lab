@@ -18,7 +18,8 @@ The evidence documents the lab environment, Windows logging, Splunk detection, a
 10. [SOC Authentication Monitoring Dashboard](10-soc-dashboard.jpg)
 11. [MITRE ATT&CK T1110.001 Mapping](11-mitre-t1110-001.jpg)
 12. [Detection Validation](12-detection-validation.jpg)
-
+13. [Negative Test Evidence](13-negative-test.png)
+    
 ## Evidence Summary
 
 The screenshots show the complete investigation workflow:
