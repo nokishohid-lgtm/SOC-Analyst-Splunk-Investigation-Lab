@@ -83,10 +83,10 @@ A missing `10_splunk_developer_registration_confirmed.png` is intentional, not a
 ## Remaining tasks to complete Phase 01
 
 - [ ] User confirms the submitted-request screenshot is saved locally.
-- [ ] Obtain an eligible, valid Splunk license or select and document an appropriate alternative.
-- [ ] Re-run the historical SPL telemetry inventory using **All time**.
-- [ ] Re-run using **Last 24 hours** and compare current ingestion.
-- [ ] Record host/source/sourcetype coverage and any missing events.
+- [x] Developer Personal License installed and verified active (10 GB/day Enterprise group, no current alerts or violations).
+- [x] Historical telemetry search succeeded with **All time** (23,172,653 events, two sources on NSLightningWave).
+- [x] Recent telemetry search succeeded with **Last 24 hours** (613,556 events across both sources).
+- [x] Record host/source/sourcetype coverage for the two existing monitored inputs. Additional enterprise sources are not yet configured.
 - [ ] Record actual alerting capability under selected license.
 - [ ] Review and sanitize the Phase 01 screenshots; add necessary evidence to expansion branch.
 - [ ] Update this audit and `docs/CURRENT-PROGRESS.md`; mark complete only when verified.
@@ -105,3 +105,24 @@ index=soc_lab
 ```
 
 Run once with **All time**, then again with **Last 24 hours**. Capture the actual results separately.
+
+
+## Verified recovery and ingestion results — November 3, 2026
+The Windows restart completed activation after in-app restart controls and `Restart-Service` had not replaced the existing Splunk process. Splunk Licensing then displayed **Enterprise license group**, valid Developer Personal License, an `auto_generated_pool_enterprise` with **10,240 MB** daily allocation, **no current alerts**, and **no licensing violations**. The recovery did not require reinstalling or deleting original index data.
+
+The following results were shown on user-provided Search & Reporting screenshots, using the same SPL inventory query with different search time ranges:
+
+| Time window | Host | Source/sourcetype | Events | First seen | Last seen |
+|---|---|---|---:|---|---|
+| All time | NSLightningWave | `WinEventLog:Microsoft-Windows-Sysmon/Operational` | 22,842,574 | 2026-09-14 18:25:46 | 2026-11-03 01:14:48 |
+| All time | NSLightningWave | `WinEventLog:Security` | 330,079 | 2026-09-14 18:25:46 | 2026-11-03 01:14:37 |
+| Last 24 hours | NSLightningWave | `WinEventLog:Microsoft-Windows-Sysmon/Operational` | 603,330 | 2026-11-02 01:00:00 | 2026-11-03 01:18:16 |
+| Last 24 hours | NSLightningWave | `WinEventLog:Security` | 10,226 | 2026-11-02 01:00:19 | 2026-11-03 01:17:24 |
+
+**Historical total:** 23,172,653 events. **Last 24 hours total:** 613,556 events. These observations establish working searches and recent telemetry for the one existing host; they do not yet establish multi-endpoint monitoring.
+
+- Screenshot 13: `13_splunk_developer_license_installed.png` — valid active Enterprise Developer license (redact personal email banner before GitHub publication).
+- Screenshot 17: `17_splunk_historical_ingestion_restored.png` — full history source inventory.
+- Screenshot 18: `18_splunk_recent_ingestion_check.png` — last 24 hours source inventory; user supplied screenshot, local saving not yet confirmed.
+
+**Still pending:** Verify existing saved alert/dashboard are present and usable; confirm local screenshot files are saved; add only a small sanitized evidence selection to the enterprise branch. Do not consider Phase 01 fully complete until these are reviewed.
