@@ -161,3 +161,13 @@ The existing README documents previous testing only; current Splunk service, lic
 - The displayed result was **126 failed logon events**, first event **August 31, 2026 16:37:12.527**, last event **October 25, 2026 19:14:50.673**. The user provided a screenshot; they are to save it as `22_event4625_baseline_presence.png` in local OneDrive Phase 01 folder.
 - Dashboard panels currently show `No results found`. A default recent time window may explain empty results because the last matching event was October 25, but panel SPL and exact time range are not yet inspected. Do not describe the cause as proven.
 - **Next:** Splunk > Dashboards > SOC Authentication Monitoring > Edit > Source (classic dashboard), inspect (do not modify/save) each panel's `<query>`, `<earliest>`, `<latest>` settings. User may send a screenshot of the editor with sensitive data redacted, but ask for no permanent screenshot until verified; later provide complete corrected dashboard source if edits are needed.
+
+
+## Dashboard restored with time filter — November 3, 2026
+- User screenshot confirms saved `SOC Authentication Monitoring` dashboard now displays both nonempty charts: `Failed Windows Logins Over Time` and `Failed Logins by Host`, with the **Last 30 days** time picker selected.
+- Source-level diagnosis: original dashboard had fixed `-24h@h` panel boundaries and no Event ID 4625 records since Oct 25, explaining `No results found`.
+- A corrected, fully versioned classic Simple XML source file has been committed on the expansion branch: `dashboards/soc-authentication-monitoring.xml` (proposed XML as supplied to user, matching demonstrated design).
+- User screenshot provided; filename to save locally: `24_splunk_authentication_dashboard_30d.png`. Local save not independently confirmed.
+- Remaining Phase 01 evidence task: from GitHub's `feature/enterprise-soc-expansion` branch, upload selected **sanitized** screenshots into `screenshots/enterprise/phase-01/` (recommended: 17 historical inventory, 18 recent inventory, 19 saved alert and 24 repaired dashboard). License image 13 contains personal email and should NOT be uploaded without redaction.
+- Phase 01 baseline is operationally verified. Do not overclaim alert trigger re-testing (to revisit in later detection phases).
+- Next after evidence upload: proceed to Phase 02 architecture planning based on verified host specs and proposed isolated endpoints.
