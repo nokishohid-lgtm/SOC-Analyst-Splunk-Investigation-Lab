@@ -85,3 +85,12 @@ The existing README documents previous testing only; current Splunk service, lic
 - Recent `LicenseUsage` lines for `soc_lab` Windows Security and Sysmon sources show `pool=auto_generated_pool_download-trial` and `poolsz=0`. This suggests a zero-capacity trial pool is still being used at runtime, despite `btool server ...` showing `active_group = Enterprise` on disk.
 - User to save screenshot locally as `15_splunk_internal_license_diagnostics.png` (save not yet confirmed).
 - Next read-only check in Splunk Search & Reporting: `| rest /services/licenser/groups | table title is_active stack_ids`. Inspect whether `Enterprise` or `Trial` reports `is_active=1`. This REST endpoint is in Splunk 10.4 official docs. If a search licensing error occurs, capture error only; do not change settings.
+
+
+## 2026-11-03 runtime group mismatch confirmed (Screenshot 16)
+- User ran `| rest /services/licenser/groups | table title is_active stack_ids` in Splunk Web.
+- REST returned **Trial is_active=1**, **Enterprise is_active=0**; thus Splunk runtime group remains expired Trial despite valid installed Developer Enterprise 10GB license.
+- `btool server list --debug` previously showed `server.conf active_group = Enterprise` — file/effective setting disagrees with running service.
+- User screenshot provided; save locally as `16_splunk_active_license_groups.png`.
+- Next safe read-only check from elevated PowerShell: compare `Get-Process splunkd | Select Name,Id,StartTime` vs `Get-Item 'C:\\Program Files\\Splunk\\etc\\system\\local\\server.conf' | Select FullName,LastWriteTime`. If splunkd started before config write, restart was not effectively applied; use controlled Windows Splunkd service restart after confirming state rather than repeatedly changing group or installing license. If started afterward, investigate runtime config, licensing manager state, and logs; don't assume restart fixes it.
+- Screenshot 13 (Enterprise 10 GB active) is STILL PENDING and must not be fabricated.
