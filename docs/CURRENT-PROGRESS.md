@@ -153,3 +153,11 @@ The existing README documents previous testing only; current Splunk service, lic
 - Screenshot provided by user; ask to save locally as `21_splunk_authentication_dashboard_loaded.png` in the known OneDrive Phase 01 folder; no personal data visibly exposed.
 - Next diagnostic: Search & Reporting > Search, set **All time**, run `index=soc_lab source="WinEventLog:Security" EventCode=4625 | stats count as failedLogins min(_time) as firstSeen max(_time) as lastSeen | convert ctime(firstSeen) ctime(lastSeen)`. Save results screenshot `22_event4625_baseline_presence.png`. Do not edit the dashboard yet; inspect panel searches/time filtering once data presence is established.
 - Phase 01 not yet complete: dashboard behavior not validated, screenshot local saving/public evidence check still pending.
+
+
+## Event ID 4625 historical search — November 3, 2026
+- User ran Splunk Search & Reporting search with All time:
+  `index=soc_lab source="WinEventLog:Security" EventCode=4625 | stats count as failedLogins min(_time) as firstSeen max(_time) as lastSeen | convert ctime(firstSeen) ctime(lastSeen)`.
+- The displayed result was **126 failed logon events**, first event **August 31, 2026 16:37:12.527**, last event **October 25, 2026 19:14:50.673**. The user provided a screenshot; they are to save it as `22_event4625_baseline_presence.png` in local OneDrive Phase 01 folder.
+- Dashboard panels currently show `No results found`. A default recent time window may explain empty results because the last matching event was October 25, but panel SPL and exact time range are not yet inspected. Do not describe the cause as proven.
+- **Next:** Splunk > Dashboards > SOC Authentication Monitoring > Edit > Source (classic dashboard), inspect (do not modify/save) each panel's `<query>`, `<earliest>`, `<latest>` settings. User may send a screenshot of the editor with sensitive data redacted, but ask for no permanent screenshot until verified; later provide complete corrected dashboard source if edits are needed.
