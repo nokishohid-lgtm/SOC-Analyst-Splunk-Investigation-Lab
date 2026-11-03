@@ -78,3 +78,10 @@ The existing README documents previous testing only; current Splunk service, lic
 - Screenshot user supplied; save locally as `14_splunk_search_license_verification.png`.
 - Next safe diagnostic: test `_internal` licensing logs because license restrictions typically allow internal index searches. Use `index=_internal sourcetype=splunkd ("license" OR "DISABLED_DUE_TO" OR "pool") | sort - _time | head 20 | table _time component log_level _raw` with Last 24 hours. Report error if internal index is blocked too.
 - Do not reinstall, delete license files, rerun duplicate uploads, clear license warnings, or repeat restarts.
+
+
+## 2026-11-03 internal licensing search result (confirmed)
+- Last-24-hours Splunk search over `index=_internal sourcetype=splunkd ("license" OR "pool" OR "DISABLED_DUE_TO")` returned **20 events** on the user screenshot.
+- Recent `LicenseUsage` lines for `soc_lab` Windows Security and Sysmon sources show `pool=auto_generated_pool_download-trial` and `poolsz=0`. This suggests a zero-capacity trial pool is still being used at runtime, despite `btool server ...` showing `active_group = Enterprise` on disk.
+- User to save screenshot locally as `15_splunk_internal_license_diagnostics.png` (save not yet confirmed).
+- Next read-only check in Splunk Search & Reporting: `| rest /services/licenser/groups | table title is_active stack_ids`. Inspect whether `Enterprise` or `Trial` reports `is_active=1`. This REST endpoint is in Splunk 10.4 official docs. If a search licensing error occurs, capture error only; do not change settings.
