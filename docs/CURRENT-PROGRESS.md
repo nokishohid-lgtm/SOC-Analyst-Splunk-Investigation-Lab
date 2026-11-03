@@ -60,3 +60,12 @@ The existing README documents previous testing only; current Splunk service, lic
 - User's previous main Licensing page still showed **Trial license group**, so active group has **not yet been verified changed**.
 - **Next action:** Licensing > Change license group > Enterprise license > Save > Restart Now if prompted. Verify main Licensing page shows Enterprise and 10 GB/day; save status-only screenshot `13_splunk_developer_license_installed.png`. Do not publish license file, hashes, or full license details.
 - **Following action:** Search & Reporting > All time > execute saved historical `soc_lab` inventory SPL, capture `14_splunk_historical_ingestion_restored.png` on successful results or capture error and troubleshoot.
+
+
+## License diagnostic checkpoint — November 3, 2026
+- Splunk CLI `list licenser-groups` could not be completed because the local `admin` password was rejected; do not repeat password guesses.
+- Read-only elevated PowerShell `splunk.exe btool server list --debug | Select-String -Pattern "active_group\\s*="` returned `etc/system/local/server.conf active_group = Enterprise`.
+- This confirms the **effective on-disk configuration** is Enterprise, but is not yet proof that the running license manager recognizes the 10 GB allowance or that `soc_lab` search works.
+- Installed Developer Personal License was previously shown VALID with 10 GB/day. The stale Licensing page previously showed trial expiration and 0 MB, with past trial warnings.
+- Next step: Splunk Web > Settings > Licensing, hard-refresh, inspect active group and allowance, then Search & Reporting > All time run `index=soc_lab | head 5` or the saved baseline inventory SPL; capture resulting success or error. If still blocked, inspect licensing warnings and current license pool rather than reinstall or reset.
+- No screenshot of keys or license XML should ever be added to the public repository.
