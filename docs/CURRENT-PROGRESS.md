@@ -110,3 +110,12 @@ The existing README documents previous testing only; current Splunk service, lic
 - Previous screenshot `16_splunk_active_license_groups.png` documents the pre-reboot Trial-active discrepancy; retained as troubleshooting evidence.
 - **Next action:** Splunk Search & Reporting, select All time, run full `soc_lab` historical telemetry inventory query. Screenshot as `17_splunk_historical_ingestion_restored.png` after seeing actual results or error. Then separately run Last 24 hours with screenshot `18_splunk_recent_ingestion_check.png`.
 - Phase 01 still in progress pending actual search verification, source inventory, recent ingestion, and sanitized evidence.
+
+
+## Historical Splunk telemetry restored — November 3, 2026
+- User screenshot verified that full `All time` inventory query against `index=soc_lab` completed successfully after reboot/licensing activation.
+- Host `NSLightningWave` with **23,172,653** total events in two sourcetype/source groups:
+  - `WinEventLog:Microsoft-Windows-Sysmon/Operational`: **22,842,574** events; first seen 2026-09-14 18:25:46, last seen 2026-11-03 01:14:48 (Splunk UI displayed local times).
+  - `WinEventLog:Security`: **330,079** events; first seen 2026-09-14 18:25:46, last seen 2026-11-03 01:14:37.
+- User screenshot supplied; save as `17_splunk_historical_ingestion_restored.png` in local phase-01 directory (local save still needs user confirmation).
+- **Next:** Run the same inventory query with `Last 24 hours` to confirm fresh telemetry, save screenshot `18_splunk_recent_ingestion_check.png`. Historical verification passed, recent ingestion verification remains pending.
