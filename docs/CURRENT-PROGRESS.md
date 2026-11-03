@@ -5,7 +5,7 @@
 **Original branch:** `main` (preserved; do not overwrite)  
 **Development branch:** `feature/enterprise-soc-expansion`  
 **Completed:** Phase 01/20 — Foundation Preservation & Baseline Audit  
-**Current:** Phase 02/20 — Architecture Design (memory and CPU captured; disk capacity next)
+**Current:** Phase 02/20 — Architecture Design (PAUSED at SSD capacity evidence)
 
 ## Phase 01 completion — verified
 
@@ -78,3 +78,23 @@ Create `phase-02` if not present. Files on the user's PC and files in GitHub are
 - User supplied and confirmed saved local files `01_system_memory.png` and `02_system_cpu.png` in the Phase 02 screenshot folder.
 - Hardware: Intel **Core i5-1235U (12th Gen)**, **10 cores**, **12 logical processors**, **1.30 GHz base speed**, **virtualization enabled**. Task Manager showed **40.0 GB DDR4** (39.7 GB usable) and roughly 22.7 GB available at capture; `Disk 0 (C:)` is an NVMe SSD.
 - Next task: File Explorer > This PC, capture visible Local Disk (C:) **free space and total capacity** as `03_storage_capacity.png` inside local `screenshots/enterprise/phase-02/`. Do not decide VM count until available disk space is measured.
+
+
+## PAUSE CHECKPOINT — November 3, 2026
+**User paused intentionally. No Phase 02 installation, configuration changes, or VM creation should be presumed.**
+
+Verified saved locally per user: `screenshots/enterprise/phase-02/01_system_memory.png` and `02_system_cpu.png`. Host `NSLightningWave`: 40 GB DDR4 (~22.7 GB available at capture), Intel Core i5-1235U, 10 cores/12 logical processors, virtualization enabled, NVMe C: SSD (free space UNKNOWN). All `phase-01` through `phase-20` folders were created locally by user and separately verified in GitHub expansion branch.
+
+**NEXT ACTION UPON RESUMING:** Windows File Explorer > This PC > Local Disk (C:) > Properties (if necessary), capture capacity and free-space screen as `03_storage_capacity.png` under `C:\\Users\\munam\\OneDrive\\Documents\\Cybersecurity-Portfolio\\SOC Analyst Investigation Lab\\screenshots\\enterprise\\phase-02\\`. Send screenshot for review.
+
+**Remaining Phase 02 steps (in order):**
+1. Save `03_storage_capacity.png`, verify free and total disk space.
+2. Verify Windows edition/build (Settings > System > About); save `04_windows_system_about.png` after screen visible, redact device IDs.
+3. Verify installed hypervisor and any existing VMs in VirtualBox/Hyper-V without altering settings; save `05_virtualization_inventory.png` if screenshot useful and redacted.
+4. Determine conservative VM/resource sizing (RAM/CPU/disk) that protects current Splunk instance; assess telemetry volume/retention.
+5. Draft proposed SOC architecture (host, isolated client endpoint(s), log transport, index, dashboard, detection workflow) and network isolation/authorized simulation scope. Distinguish existing vs proposed.
+6. Update `docs/phase-02-architecture-design.md` with topology, design tradeoffs, sizing, event flow, phased implementation steps, and acceptance criteria.
+7. Verify/sanitize Phase 02 screenshots; upload selected evidence to `screenshots/enterprise/phase-02/` on `feature/enterprise-soc-expansion`; commit documentation and audit results.
+8. Mark Phase 02 complete only when planned architecture and evidence are reviewed; Phase 03 implementation follows separately.
+
+Do not reinstall Splunk, change licensing, merge into `main`, or start VM deployment without hardware capacity and isolation plan. Resume with: **Continue Phase 2 from docs/CURRENT-PROGRESS.md; start with screenshot 03.**
