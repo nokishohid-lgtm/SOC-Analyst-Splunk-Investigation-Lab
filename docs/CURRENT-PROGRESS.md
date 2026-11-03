@@ -138,3 +138,11 @@ The existing README documents previous testing only; current Splunk service, lic
 - This confirms the saved alert exists and is enabled, **not** that it has recently triggered or produced correct detections.
 - User should save screenshot to local OneDrive `screenshots/enterprise/phase-01/19_splunk_existing_alerts_audit.png` (local save not verified).
 - Next step: Splunk Search & Reporting > Dashboards; inspect existing dashboard list without modifications. Screenshot `20_splunk_existing_dashboards_audit.png` when dashboard list is visible; report if empty.
+
+
+## Phase 01 existing dashboard list verified — November 3, 2026
+- User screenshot of Splunk Search & Reporting > Dashboards showed **5 dashboards** total, including original `SOC Authentication Monitoring` (owner `admin`, sharing `Private`, type `Classic`).
+- This confirms the saved dashboard exists, but **panels are not yet verified to load correctly**.
+- Screenshot 20: `20_splunk_existing_dashboards_audit.png`; user instructed to save it in their actual OneDrive Phase 01 screenshot folder.
+- Next: click the **SOC Authentication Monitoring** dashboard title (not Edit), let its panels load, and record screenshot `21_splunk_authentication_dashboard_loaded.png` whether it displays data or errors. Check dashboard time-range filters before concluding panels lack telemetry.
+- Keep Phase 01 in progress until dashboard functional review, evidence sanitization, and screenshot storage confirmation are complete.
