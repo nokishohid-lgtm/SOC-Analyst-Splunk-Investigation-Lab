@@ -146,3 +146,10 @@ The existing README documents previous testing only; current Splunk service, lic
 - Screenshot 20: `20_splunk_existing_dashboards_audit.png`; user instructed to save it in their actual OneDrive Phase 01 screenshot folder.
 - Next: click the **SOC Authentication Monitoring** dashboard title (not Edit), let its panels load, and record screenshot `21_splunk_authentication_dashboard_loaded.png` whether it displays data or errors. Check dashboard time-range filters before concluding panels lack telemetry.
 - Keep Phase 01 in progress until dashboard functional review, evidence sanitization, and screenshot storage confirmation are complete.
+
+
+## Phase 01 dashboard panels show no results — November 3, 2026
+- User opened the original `SOC Authentication Monitoring` classic dashboard. Both panels, `Failed Windows Logins Over Time` and `Failed Logins by Host`, loaded but displayed **No results found**. There was no visible dashboard-wide time picker. This is not yet proof of broken dashboard logic; current default time window may lack Event ID 4625 failures.
+- Screenshot provided by user; ask to save locally as `21_splunk_authentication_dashboard_loaded.png` in the known OneDrive Phase 01 folder; no personal data visibly exposed.
+- Next diagnostic: Search & Reporting > Search, set **All time**, run `index=soc_lab source="WinEventLog:Security" EventCode=4625 | stats count as failedLogins min(_time) as firstSeen max(_time) as lastSeen | convert ctime(firstSeen) ctime(lastSeen)`. Save results screenshot `22_event4625_baseline_presence.png`. Do not edit the dashboard yet; inspect panel searches/time filtering once data presence is established.
+- Phase 01 not yet complete: dashboard behavior not validated, screenshot local saving/public evidence check still pending.
