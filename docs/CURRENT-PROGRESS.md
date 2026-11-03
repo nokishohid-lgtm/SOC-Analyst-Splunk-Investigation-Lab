@@ -171,3 +171,11 @@ The existing README documents previous testing only; current Splunk service, lic
 - Remaining Phase 01 evidence task: from GitHub's `feature/enterprise-soc-expansion` branch, upload selected **sanitized** screenshots into `screenshots/enterprise/phase-01/` (recommended: 17 historical inventory, 18 recent inventory, 19 saved alert and 24 repaired dashboard). License image 13 contains personal email and should NOT be uploaded without redaction.
 - Phase 01 baseline is operationally verified. Do not overclaim alert trigger re-testing (to revisit in later detection phases).
 - Next after evidence upload: proceed to Phase 02 architecture planning based on verified host specs and proposed isolated endpoints.
+
+
+## GitHub dashboard screenshot upload verified — November 3, 2026
+- Verified directly from GitHub that `screenshots/enterprise/phase-01/24_splunk_authentication_dashboard_30d.png` exists on `feature/enterprise-soc-expansion`. User provided branch homepage screenshot showing `Add files via upload` commit.
+- GitHub page screenshot is not an additional portfolio deliverable and does not need to be saved locally.
+- Next: user locally checks `17_splunk_historical_ingestion_restored.png`, `18_splunk_recent_ingestion_check.png`, `19_splunk_existing_alerts_audit.png`, and optionally `22_event4625_baseline_presence.png`; upload available sanitized files together into `screenshots/enterprise/phase-01/` on expansion branch only, using Add file > Upload files. These source filenames correspond to actual screenshots previously reviewed in chat, but local persistence must be confirmed by user.
+- Do not upload `13_splunk_developer_license_installed.png` until the personal email in the license banner is redacted; never upload raw license XML/key.
+- Keep `main` untouched. Phase 01 baseline audit evidence publication in progress.
