@@ -130,3 +130,11 @@ The existing README documents previous testing only; current Splunk service, lic
 - Phase 1 baseline audit updated at `docs/phase-01-baseline-audit.md`; active Enterprise Developer license and historical/recent telemetry validation are now recorded as PASSED.
 - Remaining Phase 1 actions: check live original saved Alerts and dashboard, ensure screenshot files actually saved locally, curate/sanitize selected evidence for GitHub. Do not mark full Phase 1 complete yet.
 - **Next user action:** Splunk Web > Search & Reporting > Alerts (left menu), inspect existing saved alerts; show a screenshot with names and enabled/disabled status (no secrets). Save `19_splunk_existing_alerts_audit.png` under local phase-01 folder. If no alerts appear, report that honestly.
+
+
+## Alert inventory verified — November 3, 2026
+- User-supplied Splunk Search & Reporting > Alerts screenshot shows **one saved alert**, named `Repeated Failed Windows Logins by Username - 5 in 5 Minutes`.
+- Status **Enabled**, owner `admin`, app `search`, sharing `Private`. Next scheduled time displayed November 3, 2026 1:25 AM.
+- This confirms the saved alert exists and is enabled, **not** that it has recently triggered or produced correct detections.
+- User should save screenshot to local OneDrive `screenshots/enterprise/phase-01/19_splunk_existing_alerts_audit.png` (local save not verified).
+- Next step: Splunk Search & Reporting > Dashboards; inspect existing dashboard list without modifications. Screenshot `20_splunk_existing_dashboards_audit.png` when dashboard list is visible; report if empty.
