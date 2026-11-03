@@ -43,3 +43,11 @@ Update this entire file whenever a task is verified or blocked, including last s
 
 ## Limits
 The existing README documents previous testing only; current Splunk service, license and ingestion have not yet been rechecked. Do not mark Phase 01 complete until the actual results and evidence have been reviewed.
+
+
+## Developer License request under review — November 2, 2026 ET
+- User captured developer portal notice: "Your request is under review. Expect an email in 3–5 business days."
+- Request is not yet approved; wait for Splunk's email before applying a license. Submission confirmation screenshot name: `12_splunk_developer_license_request.png` (user was instructed to save; local-save confirmation not yet received).
+- Created `docs/phase-01-baseline-audit.md` on this expansion branch, recording baseline, license-blocked searches, evidence inventory, and Phase 1 remaining tasks.
+- Next project action: Begin **Phase 02 architecture design draft** while Phase 01 ingestion-validation remains blocked. Inventory available Windows/VM hardware and network isolation, document planned telemetry flow, and do not configure new ingestion or claim phase 01 complete.
+- Do not change license, reinstall Splunk, delete indexes, or merge into `main`.
