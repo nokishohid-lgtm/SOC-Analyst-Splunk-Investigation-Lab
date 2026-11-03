@@ -5,7 +5,7 @@
 **Original branch:** `main` (preserved; do not overwrite)  
 **Development branch:** `feature/enterprise-soc-expansion`  
 **Completed:** Phase 01/20 — Foundation Preservation & Baseline Audit  
-**Current:** Phase 02/20 — Architecture Design (memory documented; CPU next)
+**Current:** Phase 02/20 — Architecture Design (memory and CPU captured; disk capacity next)
 
 ## Phase 01 completion — verified
 
@@ -72,3 +72,9 @@ Create `phase-02` if not present. Files on the user's PC and files in GitHub are
 - The user's local Windows `phase-02` folder did not exist, producing File Explorer 'Windows can't find ...phase-02' error. Existing local `phase-01` is the safest anchor for creating remaining folders.
 - User instructed to execute a guarded PowerShell command: check actual `...\\screenshots\\enterprise\\phase-01` is a folder; use its parent to create `phase-01` through `phase-20` on OneDrive with `New-Item -ItemType Directory -Force`; open `phase-02` automatically. Do not claim local folders were created until user runs the command.
 - Then save existing Task Manager Memory screenshot `01_system_memory.png` and capture CPU screenshot `02_system_cpu.png` inside local `phase-02`. Phase 02 hardware inventory remains in progress.
+
+
+## CPU specification verified — November 3, 2026
+- User supplied and confirmed saved local files `01_system_memory.png` and `02_system_cpu.png` in the Phase 02 screenshot folder.
+- Hardware: Intel **Core i5-1235U (12th Gen)**, **10 cores**, **12 logical processors**, **1.30 GHz base speed**, **virtualization enabled**. Task Manager showed **40.0 GB DDR4** (39.7 GB usable) and roughly 22.7 GB available at capture; `Disk 0 (C:)` is an NVMe SSD.
+- Next task: File Explorer > This PC, capture visible Local Disk (C:) **free space and total capacity** as `03_storage_capacity.png` inside local `screenshots/enterprise/phase-02/`. Do not decide VM count until available disk space is measured.
