@@ -101,3 +101,12 @@ The existing README documents previous testing only; current Splunk service, lic
 - `splunkd` PID 5972 had start time Oct 29, 2026 6:31:48 PM, predating Enterprise license change; runtime licensing REST still showed Trial active and Enterprise inactive. Valid installed Developer license remains unactivated at runtime.
 - Recommended next safe action: Save all local work, perform **Windows Start > Power > Restart** (normal OS reboot, not a forced process kill). Then check Splunk Web > Settings > Licensing and `| rest /services/licenser/groups | table title is_active stack_ids` if needed. Capture Screenshot 13 only if Enterprise + 10 GB is actually active. If not, inspect fresh service start time and licensing logs.
 - Do not reinstall, reupload license, remove index files, or force-stop Splunk. No new screenshot is required of the failed stop error.
+
+
+## License activation confirmed — November 3, 2026
+- Windows reboot allowed Splunk Enterprise to load the configured Enterprise license group.
+- User supplied Splunk Licensing screenshot confirming **Enterprise license group** active, valid Developer Personal License **10,240 MB (10 GB)/day**, pool `auto_generated_pool_enterprise`, **no current licensing alerts**, **no violations**, and 53 MB usage that day.
+- Screenshot `13_splunk_developer_license_installed.png` is verified from user upload but user still needs to confirm saved locally; email address in top license banner must be redacted before public GitHub use.
+- Previous screenshot `16_splunk_active_license_groups.png` documents the pre-reboot Trial-active discrepancy; retained as troubleshooting evidence.
+- **Next action:** Splunk Search & Reporting, select All time, run full `soc_lab` historical telemetry inventory query. Screenshot as `17_splunk_historical_ingestion_restored.png` after seeing actual results or error. Then separately run Last 24 hours with screenshot `18_splunk_recent_ingestion_check.png`.
+- Phase 01 still in progress pending actual search verification, source inventory, recent ingestion, and sanitized evidence.
