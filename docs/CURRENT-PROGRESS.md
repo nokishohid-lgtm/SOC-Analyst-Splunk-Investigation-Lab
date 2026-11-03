@@ -5,7 +5,7 @@
 **Original branch:** `main` (preserved; do not overwrite)  
 **Development branch:** `feature/enterprise-soc-expansion`  
 **Completed:** Phase 01/20 — Foundation Preservation & Baseline Audit  
-**Current:** Phase 02/20 — Architecture Design (hardware inventory is next)
+**Current:** Phase 02/20 — Architecture Design (memory documented; CPU next)
 
 ## Phase 01 completion — verified
 
@@ -58,3 +58,10 @@ Create `phase-02` if not present. Files on the user's PC and files in GitHub are
 ## Deferred engineering validations
 
 - Actual scheduled alert triggering/notification and tuning, false-positive analysis, new endpoints, architecture implementation: **not yet verified**. These are later-phase work, not failed Phase 01 baseline criteria.
+
+
+## Phase 02 Memory inventory — November 3, 2026
+- User screenshot of Windows Task Manager > Performance > Memory verified **40.0 GB DDR4** installed (39.7 GB usable), **17.0 GB** in use (43%), **22.8 GB** available at capture, memory speed **3200 MT/s**, two of two memory slots used, and **276 MB** hardware reserved.
+- Windows Task Manager also showed `Disk 0 (C:)` as NVMe SSD and a `VirtualBox Host-Only` Ethernet adapter, neither of which proves available disk space nor completed VM installations.
+- Evidence filename to save locally: `screenshots/enterprise/phase-02/01_system_memory.png`; local save still awaiting confirmation.
+- **Next:** Task Manager > Performance > CPU, capture `screenshots/enterprise/phase-02/02_system_cpu.png` showing CPU model, cores, logical processors and virtualization status. Then assess C: disk capacity/free space. Do not assign VM counts until both CPU and storage verified.
