@@ -119,3 +119,14 @@ The existing README documents previous testing only; current Splunk service, lic
   - `WinEventLog:Security`: **330,079** events; first seen 2026-09-14 18:25:46, last seen 2026-11-03 01:14:37.
 - User screenshot supplied; save as `17_splunk_historical_ingestion_restored.png` in local phase-01 directory (local save still needs user confirmation).
 - **Next:** Run the same inventory query with `Last 24 hours` to confirm fresh telemetry, save screenshot `18_splunk_recent_ingestion_check.png`. Historical verification passed, recent ingestion verification remains pending.
+
+
+## Recent telemetry verified — November 3, 2026
+- User supplied Screenshot 18 showing successful **Last 24 hours** search against `index=soc_lab` on host `NSLightningWave`:
+  - Sysmon Operational `WinEventLog:Microsoft-Windows-Sysmon/Operational`: **603,330** events; most recent 2026-11-03 01:18:16.
+  - Windows Security `WinEventLog:Security`: **10,226** events; most recent 2026-11-03 01:17:24.
+  - Combined **613,556** events. Historical All time test had passed at **23,172,653** events.
+- Screenshot 18 verified via user image; instruct user to save locally as `18_splunk_recent_ingestion_check.png` under actual OneDrive phase-01 screenshot folder.
+- Phase 1 baseline audit updated at `docs/phase-01-baseline-audit.md`; active Enterprise Developer license and historical/recent telemetry validation are now recorded as PASSED.
+- Remaining Phase 1 actions: check live original saved Alerts and dashboard, ensure screenshot files actually saved locally, curate/sanitize selected evidence for GitHub. Do not mark full Phase 1 complete yet.
+- **Next user action:** Splunk Web > Search & Reporting > Alerts (left menu), inspect existing saved alerts; show a screenshot with names and enabled/disabled status (no secrets). Save `19_splunk_existing_alerts_audit.png` under local phase-01 folder. If no alerts appear, report that honestly.
