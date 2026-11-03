@@ -5,7 +5,7 @@
 **Original branch:** `main` (preserved; do not overwrite)  
 **Development branch:** `feature/enterprise-soc-expansion`  
 **Completed:** Phase 01/20 — Foundation Preservation & Baseline Audit  
-**Current:** Phase 02/20 — Architecture Design (PAUSED at SSD capacity evidence)
+**Current:** Phase 02/20 — Architecture Design (storage capacity verified; Windows system About next)
 
 ## Phase 01 completion — verified
 
@@ -98,3 +98,10 @@ Verified saved locally per user: `screenshots/enterprise/phase-02/01_system_memo
 8. Mark Phase 02 complete only when planned architecture and evidence are reviewed; Phase 03 implementation follows separately.
 
 Do not reinstall Splunk, change licensing, merge into `main`, or start VM deployment without hardware capacity and isolation plan. Resume with: **Continue Phase 2 from docs/CURRENT-PROGRESS.md; start with screenshot 03.**
+
+
+## Storage capacity verified — November 3, 2026
+- User shared Windows File Explorer > This PC screenshot showing `Windows-SSD (C:)` **1.62 TB free of 1.81 TB total**, approximately 90% free. Existing CPU/RAM: Intel i5-1235U (10 cores, 12 logical), 40 GB DDR4, virtualization enabled.
+- Evidence screenshot `03_storage_capacity.png` reviewed and approved; user instructed to save it locally in OneDrive `screenshots/enterprise/phase-02/`. Local save not yet independently confirmed.
+- **NEXT**: Windows Settings > System > About; capture the Windows edition/version/OS build with device identifiers redacted as `04_windows_system_about.png`. Then assess actual VirtualBox/Hyper-V installation (not just adapter) and active VMs as `05_virtualization_inventory.png` if suitable.
+- Do NOT use the earlier paused-at-disk checkpoint as the current task. No VM changes or package installs yet.
