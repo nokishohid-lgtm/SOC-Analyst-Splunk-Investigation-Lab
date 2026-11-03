@@ -1,101 +1,43 @@
-# Phase 01 — Existing SOC Lab Baseline Audit
+# Phase 01 — Foundation Preservation & Baseline Audit
 
-**Project:** Enterprise Splunk SOC & Detection Engineering (expanding an existing lab)  
-**Status:** IN PROGRESS — offline baseline documented, live data audit blocked by licensing  
-**Date:** November 2, 2026 (Eastern time)  
+**Status:** COMPLETE for baseline preservation and existing-environment verification  
+**Completed:** November 3, 2026  
 **Working branch:** `feature/enterprise-soc-expansion`  
-**Preserved original:** `main`, release `v1.0-foundation`
+**Preserved original:** `main` and release `v1.0-foundation`
 
-## Purpose
+## Scope and definition of complete
 
-Preserve the original completed Windows authentication investigation and establish verified conditions before expanding the lab. This audit separates documented historical results from current observations and unverified capabilities.
+This phase inventories and preserves the original Windows failed-authentication Splunk lab, restores usable search licensing, confirms historical and recent data, and verifies the existing saved alert and dashboard. It does **not** represent a full enterprise SOC rollout or a newly executed alert trigger/false-positive validation. Those are later-phase deliverables.
 
-## Original completed foundation (according to repository README)
+## Baseline preservation
 
-- Windows 11 Pro 25H2 (build 26200.9278) host `NSLightningWave`.
-- Splunk Enterprise index `soc_lab` collecting Windows Security logs and Sysmon telemetry.
-- Safe lab test account `SOC-Test`.
-- Event ID 4625 detection: at least 5 failed logons per five-minute window.
-- Saved alert, authentication dashboard, MITRE ATT&CK T1110.001 mapping.
-- Positive test reproduced; negative single-failure test did not meet threshold.
-- Source IP `::1` was loopback; no real adversary or compromise was claimed.
-- Original incident report, SPL queries and numbered screenshots exist on `main`.
-
-These represent **previously documented lab outcomes**, not necessarily currently operational detections.
-
-## Repository preservation — verified
-
-- GitHub repository: `nokishohid-lgtm/SOC-Analyst-Splunk-Investigation-Lab`.
-- Default and original branch: `main` (left unchanged).
-- Published original release: `v1.0-foundation` (November 2, 2026 ET).
-- Expansion branch: `feature/enterprise-soc-expansion`.
-- Phase screenshot folder: `screenshots/enterprise/phase-01/`.
+- Original repository: `nokishohid-lgtm/SOC-Analyst-Splunk-Investigation-Lab`.
+- Original `main` branch remains unchanged during the expansion.
+- Foundation snapshot published: `v1.0-foundation`.
+- Development branch: `feature/enterprise-soc-expansion`.
 - Progress checkpoint: `docs/CURRENT-PROGRESS.md`.
 
-## Current Splunk environment — user observed
+## Verified environment
 
-| Item | Observed value | Verification status |
-|---|---|---|
-| Splunk Web | `http://localhost:8000` | Accessible; Administrator logged in |
-| Splunk Enterprise version | `10.4.3` | Verified in About |
-| Build | `4174a2deda5d` | Verified in About |
-| Server | `NSLightningWave` | Verified in About |
-| License group | Trial | Verified on Licensing page |
-| Trial expiration | November 1, 2026 10:45:48 PM | Verified on Licensing page |
-| Licensed daily volume | 0 MB | As displayed |
-| Volume used today | 352 MB | As displayed on November 2 ET |
-| Warning count | 6 | As displayed |
-| Historical `soc_lab` search | Failed: licensing error in `tstats` | Verified via screenshot |
-| Current data ingestion | Unknown | Not measurable until searching is restored |
-| Native alerting | Unknown in current state | Must verify after licensing resolved |
+| Component | Observation |
+|---|---|
+| Splunk edition/version | Splunk Enterprise 10.4.3 |
+| Build | `4174a2deda5d` |
+| Host | `NSLightningWave` |
+| Original index | `soc_lab` |
+| Current license | Developer Personal License; Enterprise group active; 10 GB/day |
+| License state after Windows restart | Valid; no current license alerts or violations |
+| Collected sources | Windows Security log, Sysmon Operational |
+| Saved alert | Repeated Failed Windows Logins by Username — 5 in 5 Minutes; enabled |
+| Dashboard | SOC Authentication Monitoring; Classic; owner admin; functional |
 
-The error displayed while running the Phase 01 historical SPL query was:
-`Error in 'tstats' command: Your Splunk license expired or you have exceeded your license limit too many times.`
+### Recovered licensing issue
 
-A separate Search History screenshot showed earlier `soc_lab` searches from September 2026; this does **not** establish present retention or ingestion health.
+The Enterprise trial expired on November 1, 2026 and regular searches were blocked. A new Developer Personal License was installed and shown VALID, but the running service still used Trial even after in-app restart attempts. Diagnostics showed the on-disk `active_group = Enterprise` while live REST returned Trial active. A normal Windows restart loaded the updated Enterprise group and a 10 GB/day pool. No index deletion or Splunk reinstall was required.
 
-## Licensing remediation — pending
+## Search verification
 
-- User registered with the Splunk Developer Program.
-- Submitted a Developer License request on November 2, 2026 ET.
-- Portal showed: **Your request is under review. Expect an email in 3–5 business days.**
-- The request is **not yet approved**. Licensing must not be changed until a valid applicable license is received and its terms reviewed.
-- No changes have been made to the index, ingestion settings, original alerts, or original GitHub branch.
-
-## Evidence inventory — local screenshot filenames
-
-Local location: `C:\\Users\\munam\\OneDrive\\Documents\\Cybersecurity-Portfolio\\SOC Analyst Investigation Lab\\screenshots\\enterprise\\phase-01\\`.
-
-- `01_branch_comparison_main.png` — user provided earlier
-- `02_branch_comparison_expansion.png` — user provided earlier
-- `03_original_repository_baseline.png` — user provided earlier
-- `04_foundation_release_published.png` — user provided earlier
-- `05_splunk_home_accessible.png` — user provided earlier
-- `06_splunk_license_status.png` — user confirmed local save
-- `07_splunk_version_about.png` — user confirmed local save
-- `08_splunk_historical_ingestion_blocked.png` — user confirmed local save
-- `09_splunk_search_history.png` — user confirmed local save
-- `11_splunk_developer_license_page.png` — user confirmed local save
-- `12_splunk_developer_license_request.png` — save submitted-review confirmation
-
-A missing `10_splunk_developer_registration_confirmed.png` is intentional, not a deficiency: the license-page screenshot already documents successful registration. Local copies have not been independently inspected; sanitize before publishing on GitHub.
-
-## Remaining tasks to complete Phase 01
-
-- [ ] User confirms the submitted-request screenshot is saved locally.
-- [x] Developer Personal License installed and verified active (10 GB/day Enterprise group, no current alerts or violations).
-- [x] Historical telemetry search succeeded with **All time** (23,172,653 events, two sources on NSLightningWave).
-- [x] Recent telemetry search succeeded with **Last 24 hours** (613,556 events across both sources).
-- [x] Record host/source/sourcetype coverage for the two existing monitored inputs. Additional enterprise sources are not yet configured.
-- [ ] Record actual alerting capability under selected license.
-- [ ] Review and sanitize the Phase 01 screenshots; add necessary evidence to expansion branch.
-- [ ] Update this audit and `docs/CURRENT-PROGRESS.md`; mark complete only when verified.
-
-## Safe offline work while request is under review
-
-Proceed to Phase 02 architecture planning as a draft (host inventory, resource limits, isolated networking, event flows). Do not claim that the multi-endpoint design is implemented. Do not delete data or change licensing to bypass the current error.
-
-## Reference: SPL to re-run after licensing restored
+The user ran this inventory query with both **All time** and **Last 24 hours**:
 
 ```spl
 index=soc_lab
@@ -104,25 +46,52 @@ index=soc_lab
 | sort -count
 ```
 
-Run once with **All time**, then again with **Last 24 hours**. Capture the actual results separately.
+| Time range | Sysmon Operational events | Windows Security events | Total |
+|---|---:|---:|---:|
+| All time | 22,842,574 | 330,079 | **23,172,653** |
+| Last 24 hours | 603,330 | 10,226 | **613,556** |
 
+All data came from host `NSLightningWave`. Recent events were visible on November 3, 2026, confirming recent ingestion as well as successful searches.
 
-## Verified recovery and ingestion results — November 3, 2026
-The Windows restart completed activation after in-app restart controls and `Restart-Service` had not replaced the existing Splunk process. Splunk Licensing then displayed **Enterprise license group**, valid Developer Personal License, an `auto_generated_pool_enterprise` with **10,240 MB** daily allocation, **no current alerts**, and **no licensing violations**. The recovery did not require reinstalling or deleting original index data.
+A separate **All time** query for `index=soc_lab source="WinEventLog:Security" EventCode=4625` returned **126 matching failed-logon events** (last seen October 25, 2026).
 
-The following results were shown on user-provided Search & Reporting screenshots, using the same SPL inventory query with different search time ranges:
+## Dashboard review and correction
 
-| Time window | Host | Source/sourcetype | Events | First seen | Last seen |
-|---|---|---|---:|---|---|
-| All time | NSLightningWave | `WinEventLog:Microsoft-Windows-Sysmon/Operational` | 22,842,574 | 2026-09-14 18:25:46 | 2026-11-03 01:14:48 |
-| All time | NSLightningWave | `WinEventLog:Security` | 330,079 | 2026-09-14 18:25:46 | 2026-11-03 01:14:37 |
-| Last 24 hours | NSLightningWave | `WinEventLog:Microsoft-Windows-Sysmon/Operational` | 603,330 | 2026-11-02 01:00:00 | 2026-11-03 01:18:16 |
-| Last 24 hours | NSLightningWave | `WinEventLog:Security` | 10,226 | 2026-11-02 01:00:19 | 2026-11-03 01:17:24 |
+The original Classic dashboard was preserved but both panels were empty because each search used a fixed `-24h@h` time boundary, whereas the latest Event ID 4625 observation was October 25. The dashboard was updated to include a shared time picker defaulting to Last 30 days.
 
-**Historical total:** 23,172,653 events. **Last 24 hours total:** 613,556 events. These observations establish working searches and recent telemetry for the one existing host; they do not yet establish multi-endpoint monitoring.
+The user showed both populated panels after the change:
+- Failed Windows Logins Over Time
+- Failed Logins by Host
 
-- Screenshot 13: `13_splunk_developer_license_installed.png` — valid active Enterprise Developer license (redact personal email banner before GitHub publication).
-- Screenshot 17: `17_splunk_historical_ingestion_restored.png` — full history source inventory.
-- Screenshot 18: `18_splunk_recent_ingestion_check.png` — last 24 hours source inventory; user supplied screenshot, local saving not yet confirmed.
+Complete corrected Simple XML is versioned at `dashboards/soc-authentication-monitoring.xml` on the development branch. The original default-time-window behavior was documented; the newly working dashboard was visually verified.
 
-**Still pending:** Verify existing saved alert/dashboard are present and usable; confirm local screenshot files are saved; add only a small sanitized evidence selection to the enterprise branch. Do not consider Phase 01 fully complete until these are reviewed.
+## Published evidence — verified on GitHub
+
+Directory: `screenshots/enterprise/phase-01/`
+
+- `17_splunk_historical_ingestion_restored.png`
+- `18_splunk_recent_ingestion_check.png`
+- `19_splunk_existing_alerts_audit.png`
+- `22_event4625_baseline_presence.png`
+- `24_splunk_authentication_dashboard_30d.png`
+
+All five files were directly verified as present on the expansion branch. Screenshot 13, which includes a personal email in the license banner, was intentionally **not** published; the raw license file and XML are never evidence for a public repository.
+
+## Acceptance criteria
+
+- [x] Original foundation release and branch preserved.
+- [x] Enterprise Developer license active with usable search.
+- [x] Historical and last-24-hours telemetry verified.
+- [x] Original enabled saved alert present.
+- [x] Event ID 4625 historical data confirmed.
+- [x] Dashboard displays expected historical results after time-range correction.
+- [x] Five selected screenshots published on enterprise branch.
+- [x] Dashboard XML and progress checkpoint tracked on enterprise branch.
+
+## Explicitly deferred work
+
+The saved alert's status is **Enabled**, but current firing behavior, notification action, threshold tuning, and false-positive handling have not been retested in this phase. Multi-endpoint onboarding, retention/capacity analysis, richer detection engineering, incident workflows, and enterprise architecture implementation also remain for future phases.
+
+## Next
+
+Start `docs/phase-02-architecture-design.md` with an actual hardware inventory (RAM, CPU, free disk capacity) before deciding on virtual machines or additional agents.
