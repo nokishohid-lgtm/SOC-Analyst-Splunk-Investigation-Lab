@@ -51,3 +51,12 @@ The existing README documents previous testing only; current Splunk service, lic
 - Created `docs/phase-01-baseline-audit.md` on this expansion branch, recording baseline, license-blocked searches, evidence inventory, and Phase 1 remaining tasks.
 - Next project action: Begin **Phase 02 architecture design draft** while Phase 01 ingestion-validation remains blocked. Inventory available Windows/VM hardware and network isolation, document planned telemetry flow, and do not configure new ingestion or claim phase 01 complete.
 - Do not change license, reinstall Splunk, delete indexes, or merge into `main`.
+
+
+## Verified installed Developer license — November 2, 2026 ET
+- User inspected installed licenses on the NSLightningWave Splunk 10.4.3 server.
+- Splunk Developer Personal License is listed as **VALID**, with Enterprise type/stack and 10 GB/day allowance; expiration May 1, 2027 per approval email.
+- Original Download Trial remains EXPIRED; this is expected and does not require removal.
+- User's previous main Licensing page still showed **Trial license group**, so active group has **not yet been verified changed**.
+- **Next action:** Licensing > Change license group > Enterprise license > Save > Restart Now if prompted. Verify main Licensing page shows Enterprise and 10 GB/day; save status-only screenshot `13_splunk_developer_license_installed.png`. Do not publish license file, hashes, or full license details.
+- **Following action:** Search & Reporting > All time > execute saved historical `soc_lab` inventory SPL, capture `14_splunk_historical_ingestion_restored.png` on successful results or capture error and troubleshoot.
