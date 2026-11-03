@@ -94,3 +94,10 @@ The existing README documents previous testing only; current Splunk service, lic
 - User screenshot provided; save locally as `16_splunk_active_license_groups.png`.
 - Next safe read-only check from elevated PowerShell: compare `Get-Process splunkd | Select Name,Id,StartTime` vs `Get-Item 'C:\\Program Files\\Splunk\\etc\\system\\local\\server.conf' | Select FullName,LastWriteTime`. If splunkd started before config write, restart was not effectively applied; use controlled Windows Splunkd service restart after confirming state rather than repeatedly changing group or installing license. If started afterward, investigate runtime config, licensing manager state, and logs; don't assume restart fixes it.
 - Screenshot 13 (Enterprise 10 GB active) is STILL PENDING and must not be fabricated.
+
+
+## Windows service restart failure — November 3, 2026
+- Elevated PowerShell command `Restart-Service -Name Splunkd -PassThru` failed: `Cannot stop Splunkd service on computer '.'`. No evidence a successful stop/start occurred.
+- `splunkd` PID 5972 had start time Oct 29, 2026 6:31:48 PM, predating Enterprise license change; runtime licensing REST still showed Trial active and Enterprise inactive. Valid installed Developer license remains unactivated at runtime.
+- Recommended next safe action: Save all local work, perform **Windows Start > Power > Restart** (normal OS reboot, not a forced process kill). Then check Splunk Web > Settings > Licensing and `| rest /services/licenser/groups | table title is_active stack_ids` if needed. Capture Screenshot 13 only if Enterprise + 10 GB is actually active. If not, inspect fresh service start time and licensing logs.
+- Do not reinstall, reupload license, remove index files, or force-stop Splunk. No new screenshot is required of the failed stop error.
