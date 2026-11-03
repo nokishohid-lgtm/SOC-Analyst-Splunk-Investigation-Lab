@@ -69,3 +69,12 @@ The existing README documents previous testing only; current Splunk service, lic
 - Installed Developer Personal License was previously shown VALID with 10 GB/day. The stale Licensing page previously showed trial expiration and 0 MB, with past trial warnings.
 - Next step: Splunk Web > Settings > Licensing, hard-refresh, inspect active group and allowance, then Search & Reporting > All time run `index=soc_lab | head 5` or the saved baseline inventory SPL; capture resulting success or error. If still blocked, inspect licensing warnings and current license pool rather than reinstall or reset.
 - No screenshot of keys or license XML should ever be added to the public repository.
+
+
+## 2026-11-03: Search still blocked after group configuration change
+- Actual Splunk Licensing page still displayed **Trial license group**, expired trial, and **0 MB** daily allowance; installed Developer Enterprise license remained VALID 10 GB.
+- Read-only `btool server list --debug` returned `active_group = Enterprise` in local server.conf. This establishes on-disk effective configuration only, **not runtime activation**.
+- The actual user test `index=soc_lab | head 5` with **All time** failed with `Error in 'litsearch' command: Your Splunk license expired or you have exceeded your license limit too many times.`
+- Screenshot user supplied; save locally as `14_splunk_search_license_verification.png`.
+- Next safe diagnostic: test `_internal` licensing logs because license restrictions typically allow internal index searches. Use `index=_internal sourcetype=splunkd ("license" OR "DISABLED_DUE_TO" OR "pool") | sort - _time | head 20 | table _time component log_level _raw` with Last 24 hours. Report error if internal index is blocked too.
+- Do not reinstall, delete license files, rerun duplicate uploads, clear license warnings, or repeat restarts.
