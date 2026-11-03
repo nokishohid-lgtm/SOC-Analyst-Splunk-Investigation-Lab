@@ -1,6 +1,6 @@
 # Phase 02 — Enterprise SOC Architecture Design
 
-**Status:** IN PROGRESS — hardware inventory not yet captured  
+**Status:** IN PROGRESS — RAM and CPU verified, storage capacity pending  
 **Branch:** `feature/enterprise-soc-expansion`  
 **Baseline:** Phase 01 completed (existing one-host Splunk environment verified)  
 
@@ -18,9 +18,9 @@ Design a safe, low-cost, reproducible SOC training environment that extends the 
 
 ## First task — Hardware capacity inventory (no configuration changes)
 Record these facts before choosing virtual machines or other security agents:
-- [ ] Total RAM installed.
-- [ ] CPU model and logical processor count.
-- [ ] Storage capacity and free space.
+- [x] Total RAM installed: **40.0 GB DDR4** (39.7 GB usable), ~22.7 GB available during capture.
+- [x] CPU: **Intel Core i5-1235U (12th Gen), 10 cores, 12 logical processors**, virtualization enabled.
+- [ ] Storage capacity and free space; `Disk 0 (C:)` is NVMe SSD, but capacity/free space are not yet verified.
 - [ ] Windows edition and build.
 - [ ] Whether a hypervisor (Hyper-V, VirtualBox, or VMware) is already installed.
 - [ ] Whether Windows host can safely run one or more isolated VMs without disrupting Splunk ingestion.
@@ -28,7 +28,7 @@ Record these facts before choosing virtual machines or other security agents:
 Evidence files (save locally first):
 - `screenshots/enterprise/phase-02/01_system_memory.png` — Task Manager > Performance > Memory.
 - `screenshots/enterprise/phase-02/02_system_cpu.png` — Task Manager > Performance > CPU.
-- `screenshots/enterprise/phase-02/03_storage_capacity.png` — disk free-space evidence, if needed.
+- `screenshots/enterprise/phase-02/03_storage_capacity.png` — File Explorer > This PC showing C: drive free space and total size (next screenshot).
 
 Local screenshot folder:
 `C:\Users\munam\OneDrive\Documents\Cybersecurity-Portfolio\SOC Analyst Investigation Lab\screenshots\enterprise\phase-02\`
