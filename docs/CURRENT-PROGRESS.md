@@ -65,3 +65,10 @@ Create `phase-02` if not present. Files on the user's PC and files in GitHub are
 - Windows Task Manager also showed `Disk 0 (C:)` as NVMe SSD and a `VirtualBox Host-Only` Ethernet adapter, neither of which proves available disk space nor completed VM installations.
 - Evidence filename to save locally: `screenshots/enterprise/phase-02/01_system_memory.png`; local save still awaiting confirmation.
 - **Next:** Task Manager > Performance > CPU, capture `screenshots/enterprise/phase-02/02_system_cpu.png` showing CPU model, cores, logical processors and virtualization status. Then assess C: disk capacity/free space. Do not assign VM counts until both CPU and storage verified.
+
+
+## All 20 screenshot directories prepared — November 3, 2026
+- Verified the GitHub enterprise expansion branch has `screenshots/enterprise/phase-01/` through `phase-20/`, each tracked via `.gitkeep`. Folder creation is complete **on GitHub only**.
+- The user's local Windows `phase-02` folder did not exist, producing File Explorer 'Windows can't find ...phase-02' error. Existing local `phase-01` is the safest anchor for creating remaining folders.
+- User instructed to execute a guarded PowerShell command: check actual `...\\screenshots\\enterprise\\phase-01` is a folder; use its parent to create `phase-01` through `phase-20` on OneDrive with `New-Item -ItemType Directory -Force`; open `phase-02` automatically. Do not claim local folders were created until user runs the command.
+- Then save existing Task Manager Memory screenshot `01_system_memory.png` and capture CPU screenshot `02_system_cpu.png` inside local `phase-02`. Phase 02 hardware inventory remains in progress.
