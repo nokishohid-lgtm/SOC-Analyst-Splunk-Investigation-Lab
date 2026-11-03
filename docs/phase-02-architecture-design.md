@@ -1,6 +1,6 @@
 # Phase 02 — Enterprise SOC Architecture Design
 
-**Status:** IN PROGRESS — RAM and CPU verified, storage capacity pending  
+**Status:** IN PROGRESS — RAM, CPU, and SSD verified; Windows and hypervisor inventory pending  
 **Branch:** `feature/enterprise-soc-expansion`  
 **Baseline:** Phase 01 completed (existing one-host Splunk environment verified)  
 
@@ -20,7 +20,7 @@ Design a safe, low-cost, reproducible SOC training environment that extends the 
 Record these facts before choosing virtual machines or other security agents:
 - [x] Total RAM installed: **40.0 GB DDR4** (39.7 GB usable), ~22.7 GB available during capture.
 - [x] CPU: **Intel Core i5-1235U (12th Gen), 10 cores, 12 logical processors**, virtualization enabled.
-- [ ] Storage capacity and free space; `Disk 0 (C:)` is NVMe SSD, but capacity/free space are not yet verified.
+- [x] Storage: NVMe `Windows-SSD (C:)`, **1.81 TB total, 1.62 TB free** per File Explorer.
 - [ ] Windows edition and build.
 - [ ] Whether a hypervisor (Hyper-V, VirtualBox, or VMware) is already installed.
 - [ ] Whether Windows host can safely run one or more isolated VMs without disrupting Splunk ingestion.
@@ -64,3 +64,7 @@ The final topology, VM counts, collection method, and network isolation design d
 - For every future edited code/config file, provide the complete replacement and exact path.
 - Capture screenshots **only when the named milestone appears** and save them under Phase 02.
 - Keep the up-to-date resume point in `docs/CURRENT-PROGRESS.md`.
+
+
+## Storage capacity verified — November 3, 2026
+Windows File Explorer screenshot verified local C: SSD capacity **1.81 TB** and free space **1.62 TB**. Filename for Phase 02 evidence: `03_storage_capacity.png` (user instructed to save locally). Together with the previously documented 40 GB DDR4 and i5-1235U 10-core/12-logical CPU, this indicates enough apparent resources for a modest lab. Exact VM count, memory allocation, and disk use remain to be designed after OS/hypervisor inventory. Next evidence: `04_windows_system_about.png` from Settings > System > About, with device identifiers redacted.
